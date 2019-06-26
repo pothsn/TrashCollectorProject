@@ -10,6 +10,7 @@ namespace TrashCollector.Controllers
     {
         public ActionResult Index()
         {
+            //check roles and redirect
             return View();
         }
 

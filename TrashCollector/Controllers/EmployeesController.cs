@@ -17,6 +17,7 @@ namespace TrashCollector.Controllers
         // GET: Employees
         public ActionResult Index()
         {
+            //When you get user id, check for entity by userId, if no exists then ceate
             return View(db.Employees.ToList());
         }
 
