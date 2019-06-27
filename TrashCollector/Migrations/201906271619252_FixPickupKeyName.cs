@@ -3,7 +3,7 @@ namespace TrashCollector.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class FixPickupKeyName : DbMigration
     {
         public override void Up()
         {
@@ -19,10 +19,13 @@ namespace TrashCollector.Migrations
                         State = c.String(),
                         Zipcode = c.Int(nullable: false),
                         ApplicationId = c.String(maxLength: 128),
+                        PickupId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationId)
-                .Index(t => t.ApplicationId);
+                .ForeignKey("dbo.Pickups", t => t.PickupId, cascadeDelete: true)
+                .Index(t => t.ApplicationId)
+                .Index(t => t.PickupId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -83,6 +86,21 @@ namespace TrashCollector.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
+                "dbo.Pickups",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        RegularPickupDay = c.Int(nullable: false),
+                        PickupConfirmed = c.Boolean(nullable: false),
+                        ExtraPickupDay = c.DateTime(nullable: false),
+                        ExtraPickupConfirmed = c.Boolean(nullable: false),
+                        Bill = c.Double(nullable: false),
+                        TemporarySuspensionStart = c.DateTime(nullable: false),
+                        TemporarySuspensionEnd = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Employees",
                 c => new
                     {
@@ -111,6 +129,7 @@ namespace TrashCollector.Migrations
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Employees", "ApplicationId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Customers", "PickupId", "dbo.Pickups");
             DropForeignKey("dbo.Customers", "ApplicationId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
@@ -122,9 +141,11 @@ namespace TrashCollector.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.Customers", new[] { "PickupId" });
             DropIndex("dbo.Customers", new[] { "ApplicationId" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Employees");
+            DropTable("dbo.Pickups");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");

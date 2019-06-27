@@ -1,0 +1,74 @@
+﻿@model TrashCollector.Models.Pickup
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pickup</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RegularPickupDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegularPickupDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickupConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickupConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExtraPickupDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExtraPickupDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExtraPickupConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExtraPickupConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bill)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TemporarySuspensionStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TemporarySuspensionStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TemporarySuspensionEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TemporarySuspensionEnd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Ids }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

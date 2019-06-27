@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TrashCollector.Models.Pickup>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RegularPickupDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PickupConfirmed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExtraPickupDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExtraPickupConfirmed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TemporarySuspensionStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TemporarySuspensionEnd)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegularPickupDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PickupConfirmed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExtraPickupDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExtraPickupConfirmed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TemporarySuspensionStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TemporarySuspensionEnd)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Ids }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Ids }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Ids })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,80 @@
+﻿@model TrashCollector.Models.Pickup
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Pickup</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RegularPickupDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegularPickupDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickupConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickupConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExtraPickupDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExtraPickupDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExtraPickupConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExtraPickupConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bill)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TemporarySuspensionStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TemporarySuspensionStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TemporarySuspensionEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TemporarySuspensionEnd)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
