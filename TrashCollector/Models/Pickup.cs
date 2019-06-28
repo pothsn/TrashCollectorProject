@@ -15,19 +15,13 @@ namespace TrashCollector.Models
 
         [DisplayName("Regular Pickup Day")]
         public DayOfWeek RegularPickupDay { get; set; }
-        //[DisplayName("Regular Pickup Day")]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        //public DateTime ExtraPickup { get; set; }
-
+        
         [DisplayName("Pickup Confirmed")]
         public bool PickupConfirmed { get; set; }
 
         [DisplayName("Extra Pickup Day")]
+        [DataType(DataType.Date)]
         public DateTime ExtraPickupDay { get; set; }
-
-        //[DisplayName("Extra Pickup Day")]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        //public DateTime ExtraPickup { get; set; }
 
         [DisplayName("Extra Pickup Confirmed")]
         public bool ExtraPickupConfirmed { get; set; }
@@ -35,19 +29,16 @@ namespace TrashCollector.Models
         public double Bill { get; set; }
 
         [DisplayName("Temporary Suspension Start")]
-        public DateTime TemporarySuspensionStart  { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime TemporarySuspensionStart { get; set; }
+
         [DisplayName("Temporary Suspension End")]
+        [DataType(DataType.Date)]
         public DateTime TemporarySuspensionEnd { get; set; }
 
-        //[DisplayName("Temporary Suspension Start")]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        //public DateTime SuspendStart { get; set; }
-
-        //[DisplayName("Temporary Suspension End")]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        //public DateTime SuspendEnd { get; set; }
-
         
+
+
 
     }
 }

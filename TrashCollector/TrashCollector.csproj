@@ -189,6 +189,18 @@
     <Compile Include="Migrations\201906281305058_FixNamingConventions.Designer.cs">
       <DependentUpon>201906281305058_FixNamingConventions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906281320219_TryingDifferentFormattingForDateTimeInPickupsProperties.cs" />
+    <Compile Include="Migrations\201906281320219_TryingDifferentFormattingForDateTimeInPickupsProperties.Designer.cs">
+      <DependentUpon>201906281320219_TryingDifferentFormattingForDateTimeInPickupsProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906281324002_FixedNamingOfPropertiesForNewDateTimeChangesInPickupModel.cs" />
+    <Compile Include="Migrations\201906281324002_FixedNamingOfPropertiesForNewDateTimeChangesInPickupModel.Designer.cs">
+      <DependentUpon>201906281324002_FixedNamingOfPropertiesForNewDateTimeChangesInPickupModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906281359242_OptimizedUseOfDateTimeForPickupProperties.cs" />
+    <Compile Include="Migrations\201906281359242_OptimizedUseOfDateTimeForPickupProperties.Designer.cs">
+      <DependentUpon>201906281359242_OptimizedUseOfDateTimeForPickupProperties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -297,6 +309,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906281305058_FixNamingConventions.resx">
       <DependentUpon>201906281305058_FixNamingConventions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906281320219_TryingDifferentFormattingForDateTimeInPickupsProperties.resx">
+      <DependentUpon>201906281320219_TryingDifferentFormattingForDateTimeInPickupsProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906281324002_FixedNamingOfPropertiesForNewDateTimeChangesInPickupModel.resx">
+      <DependentUpon>201906281324002_FixedNamingOfPropertiesForNewDateTimeChangesInPickupModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906281359242_OptimizedUseOfDateTimeForPickupProperties.resx">
+      <DependentUpon>201906281359242_OptimizedUseOfDateTimeForPickupProperties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
