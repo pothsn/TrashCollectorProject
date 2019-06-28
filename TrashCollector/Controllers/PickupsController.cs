@@ -52,7 +52,7 @@ namespace TrashCollector.Controllers
             {
                 db.Pickups.Add(pickup);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
 
             return View(pickup);

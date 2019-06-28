@@ -49,16 +49,13 @@ namespace TrashCollector.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,firstName,lastName,address,city,state,zipcode")] Customer customer)
         {
-           
-     
-
             if (ModelState.IsValid)
             {
-                customer.PickupId = db.Pickups.Where(s => s.Id == 2).Single().Id;
+                //customer.PickupId = db.Pickups.Where(s => s.Id == 2).Single().Id;
                 customer.ApplicationId = User.Identity.GetUserId();
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                return RedirectToAction("Create", "Index", new { id = customer.Id});
+                return RedirectToAction("Create", "Pickups", new { id = customer.Id});
             }
 
             return View(customer);

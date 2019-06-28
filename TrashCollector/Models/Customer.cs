@@ -25,7 +25,7 @@ namespace TrashCollector.Models
 
         [DisplayName("Pickup")]
         [ForeignKey("Pickup")]
-        public int PickupId { get; set; }
+        public int? PickupId { get; set; }
         public Pickup Pickup { get; set; }
     }
 }

@@ -55,13 +55,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.TemporarySuspensionStart)
         </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.TemporarySuspensionEnd)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Ids }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Ids }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Ids })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
