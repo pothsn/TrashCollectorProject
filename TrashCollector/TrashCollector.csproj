@@ -201,6 +201,10 @@
     <Compile Include="Migrations\201906281359242_OptimizedUseOfDateTimeForPickupProperties.Designer.cs">
       <DependentUpon>201906281359242_OptimizedUseOfDateTimeForPickupProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906281414432_MakingExtraPickupAndTemporarySuspentionNullable.cs" />
+    <Compile Include="Migrations\201906281414432_MakingExtraPickupAndTemporarySuspentionNullable.Designer.cs">
+      <DependentUpon>201906281414432_MakingExtraPickupAndTemporarySuspentionNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -318,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906281359242_OptimizedUseOfDateTimeForPickupProperties.resx">
       <DependentUpon>201906281359242_OptimizedUseOfDateTimeForPickupProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906281414432_MakingExtraPickupAndTemporarySuspentionNullable.resx">
+      <DependentUpon>201906281414432_MakingExtraPickupAndTemporarySuspentionNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

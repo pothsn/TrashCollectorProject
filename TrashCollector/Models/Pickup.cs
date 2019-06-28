@@ -21,7 +21,7 @@ namespace TrashCollector.Models
 
         [DisplayName("Extra Pickup Day")]
         [DataType(DataType.Date)]
-        public DateTime ExtraPickupDay { get; set; }
+        public DateTime? ExtraPickupDay { get; set; }
 
         [DisplayName("Extra Pickup Confirmed")]
         public bool ExtraPickupConfirmed { get; set; }
@@ -30,11 +30,11 @@ namespace TrashCollector.Models
 
         [DisplayName("Temporary Suspension Start")]
         [DataType(DataType.Date)]
-        public DateTime TemporarySuspensionStart { get; set; }
+        public DateTime? TemporarySuspensionStart { get; set; }
 
         [DisplayName("Temporary Suspension End")]
         [DataType(DataType.Date)]
-        public DateTime TemporarySuspensionEnd { get; set; }
+        public DateTime? TemporarySuspensionEnd { get; set; }
 
         
 
