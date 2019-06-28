@@ -15,18 +15,14 @@ namespace TrashCollector.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Employees
-        public ActionResult Index(int zipcode)
+        public ActionResult Index(int? zipcode)
         {
+            DateTime today = new DateTime();
             CustomerPickup customerPickup = new CustomerPickup();
-            customerPickup.Customers = db.Customers.Include(c => c.Zipcode == zipcode).ToList();
-            foreach (Customer customer in customerPickup.Customers)
-            {
-                customerPickup.Pickups = db.Pickups.Include(p => p.Id == customer.PickupId).ToList();
-            }
-            
-            //include and .tolist
-            //When you get user id, check for entity by userId, if no exists then ceate
-            return View(customerPickup);
+            customerPickup.Customers = db.Customers.Include(c => c.Pickup).ToList();
+            var todaysPickUps = customerPickup.Customers.Where(p => p.Zipcode == zipcode && p.Pickup.RegularPickupDay == today.DayOfWeek && p.Pickup.ExtraPickupDay == today);
+
+            return View(customerPickup.TodaysPickups) ;
         }
 
         // GET: Employees/Details/5
@@ -61,7 +57,7 @@ namespace TrashCollector.Controllers
             {
                 db.Employees.Add(employee);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Employees", employee.Zipcode);
+                return RedirectToAction("Index", "Employees", new { zipcode = employee.Zipcode });
             }
 
             return View(employee);
@@ -87,7 +83,7 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "zipcode")] Employee employee)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Zipcode")] Employee employee)
         {
             if (ModelState.IsValid)
             {

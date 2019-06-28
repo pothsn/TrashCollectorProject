@@ -14,6 +14,8 @@ namespace TrashCollector.Models
         public List<Customer> Customers { get; set; }
 
         public List<Pickup> Pickups { get; set; }
+
+        public List<Pickup> TodaysPickups { get; set; }
     }
     
 }
