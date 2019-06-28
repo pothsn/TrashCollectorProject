@@ -15,10 +15,18 @@ namespace TrashCollector.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Employees
-        public ActionResult Index()
+        public ActionResult Index(int zipcode)
         {
+            CustomerPickup customerPickup = new CustomerPickup();
+            customerPickup.Customers = db.Customers.Include(c => c.Zipcode == zipcode).ToList();
+            foreach (Customer customer in customerPickup.Customers)
+            {
+                customerPickup.Pickups = db.Pickups.Include(p => p.Id == customer.PickupId).ToList();
+            }
+            
+            //include and .tolist
             //When you get user id, check for entity by userId, if no exists then ceate
-            return View(db.Employees.ToList());
+            return View(customerPickup);
         }
 
         // GET: Employees/Details/5
@@ -47,13 +55,13 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "zipcode")] Employee employee)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,zipcode")] Employee employee)
         {
             if (ModelState.IsValid)
             {
                 db.Employees.Add(employee);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Employees", employee.Zipcode);
             }
 
             return View(employee);
