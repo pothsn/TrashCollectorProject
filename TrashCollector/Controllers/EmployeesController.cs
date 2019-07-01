@@ -19,11 +19,18 @@ namespace TrashCollector.Controllers
         public ActionResult Index()
         {                     
             string currentUserId = User.Identity.GetUserId();
-            // query for logged in employee
             Employee employee = db.Employees.Where(e => e.ApplicationId == currentUserId).Single();
             DateTime todaysDate = new DateTime();
-            int today = (int)System.DateTime.Now.DayOfWeek;
+            todaysDate = DateTime.Today;
+            int today = (int)System.DateTime.Now.DayOfWeek;           
             var customerPickups = db.Customers.Where(p => p.Zipcode == employee.Zipcode && ((int)p.Pickup.RegularPickupDay == today || p.Pickup.ExtraPickupDay == todaysDate)).Include(p => p.Pickup).ToList();
+            foreach (Customer customer in customerPickups)
+            {   
+                if (todaysDate.Ticks > ((DateTime)customer.Pickup.TemporarySuspensionStart).Ticks && todaysDate.Ticks < ((DateTime)customer.Pickup.TemporarySuspensionEnd).Ticks)
+                {
+                    customerPickups.Remove(customer);
+                }
+            }
             return View(customerPickups);
         }
 
