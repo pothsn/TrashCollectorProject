@@ -15,14 +15,10 @@ namespace TrashCollector.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Employees
-        public ActionResult Index(int? zipcode)
+        public ActionResult Index()
         {
-            DateTime today = new DateTime();
-            CustomerPickup customerPickup = new CustomerPickup();
-            customerPickup.Customers = db.Customers.Include(c => c.Pickup).ToList();
-            var todaysPickUps = customerPickup.Customers.Where(p => p.Zipcode == zipcode && p.Pickup.RegularPickupDay == today.DayOfWeek && p.Pickup.ExtraPickupDay == today);
-
-            return View(customerPickup.TodaysPickups) ;
+            var pickups = db.Customers.Include(p => p.PickupId).ToList();
+            return View(pickups);
         }
 
         // GET: Employees/Details/5
@@ -57,7 +53,7 @@ namespace TrashCollector.Controllers
             {
                 db.Employees.Add(employee);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Employees", new { zipcode = employee.Zipcode });
+                return RedirectToAction("Index", "Employees");
             }
 
             return View(employee);

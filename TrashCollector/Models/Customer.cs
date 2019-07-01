@@ -21,11 +21,11 @@ namespace TrashCollector.Models
 
         [ForeignKey("ApplicationUser")]
         public string ApplicationId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
         [DisplayName("Pickup")]
         [ForeignKey("Pickup")]
         public int? PickupId { get; set; }
-        public Pickup Pickup { get; set; }
+        public virtual Pickup Pickup { get; set; }
     }
 }

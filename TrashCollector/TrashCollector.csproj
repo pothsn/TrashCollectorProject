@@ -177,42 +177,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906271619252_FixPickupKeyName.cs" />
-    <Compile Include="Migrations\201906271619252_FixPickupKeyName.Designer.cs">
-      <DependentUpon>201906271619252_FixPickupKeyName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906281233027_NullableValueForPickupIdFK.cs" />
-    <Compile Include="Migrations\201906281233027_NullableValueForPickupIdFK.Designer.cs">
-      <DependentUpon>201906281233027_NullableValueForPickupIdFK.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906281305058_FixNamingConventions.cs" />
-    <Compile Include="Migrations\201906281305058_FixNamingConventions.Designer.cs">
-      <DependentUpon>201906281305058_FixNamingConventions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906281320219_TryingDifferentFormattingForDateTimeInPickupsProperties.cs" />
-    <Compile Include="Migrations\201906281320219_TryingDifferentFormattingForDateTimeInPickupsProperties.Designer.cs">
-      <DependentUpon>201906281320219_TryingDifferentFormattingForDateTimeInPickupsProperties.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906281324002_FixedNamingOfPropertiesForNewDateTimeChangesInPickupModel.cs" />
-    <Compile Include="Migrations\201906281324002_FixedNamingOfPropertiesForNewDateTimeChangesInPickupModel.Designer.cs">
-      <DependentUpon>201906281324002_FixedNamingOfPropertiesForNewDateTimeChangesInPickupModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906281359242_OptimizedUseOfDateTimeForPickupProperties.cs" />
-    <Compile Include="Migrations\201906281359242_OptimizedUseOfDateTimeForPickupProperties.Designer.cs">
-      <DependentUpon>201906281359242_OptimizedUseOfDateTimeForPickupProperties.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906281414432_MakingExtraPickupAndTemporarySuspentionNullable.cs" />
-    <Compile Include="Migrations\201906281414432_MakingExtraPickupAndTemporarySuspentionNullable.Designer.cs">
-      <DependentUpon>201906281414432_MakingExtraPickupAndTemporarySuspentionNullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906281600337_UpdateNameParametersForEmployeeName.cs" />
-    <Compile Include="Migrations\201906281600337_UpdateNameParametersForEmployeeName.Designer.cs">
-      <DependentUpon>201906281600337_UpdateNameParametersForEmployeeName.cs</DependentUpon>
+    <Compile Include="Migrations\201906282103480_NewMigrationForTestableSeeds.cs" />
+    <Compile Include="Migrations\201906282103480_NewMigrationForTestableSeeds.Designer.cs">
+      <DependentUpon>201906282103480_NewMigrationForTestableSeeds.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\CustomerPickup.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -312,29 +283,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906271619252_FixPickupKeyName.resx">
-      <DependentUpon>201906271619252_FixPickupKeyName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906281233027_NullableValueForPickupIdFK.resx">
-      <DependentUpon>201906281233027_NullableValueForPickupIdFK.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906281305058_FixNamingConventions.resx">
-      <DependentUpon>201906281305058_FixNamingConventions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906281320219_TryingDifferentFormattingForDateTimeInPickupsProperties.resx">
-      <DependentUpon>201906281320219_TryingDifferentFormattingForDateTimeInPickupsProperties.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906281324002_FixedNamingOfPropertiesForNewDateTimeChangesInPickupModel.resx">
-      <DependentUpon>201906281324002_FixedNamingOfPropertiesForNewDateTimeChangesInPickupModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906281359242_OptimizedUseOfDateTimeForPickupProperties.resx">
-      <DependentUpon>201906281359242_OptimizedUseOfDateTimeForPickupProperties.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906281414432_MakingExtraPickupAndTemporarySuspentionNullable.resx">
-      <DependentUpon>201906281414432_MakingExtraPickupAndTemporarySuspentionNullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906281600337_UpdateNameParametersForEmployeeName.resx">
-      <DependentUpon>201906281600337_UpdateNameParametersForEmployeeName.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906282103480_NewMigrationForTestableSeeds.resx">
+      <DependentUpon>201906282103480_NewMigrationForTestableSeeds.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

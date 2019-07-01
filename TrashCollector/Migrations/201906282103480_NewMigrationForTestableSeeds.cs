@@ -3,7 +3,7 @@ namespace TrashCollector.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FixPickupKeyName : DbMigration
+    public partial class NewMigrationForTestableSeeds : DbMigration
     {
         public override void Up()
         {
@@ -19,11 +19,11 @@ namespace TrashCollector.Migrations
                         State = c.String(),
                         Zipcode = c.Int(nullable: false),
                         ApplicationId = c.String(maxLength: 128),
-                        PickupId = c.Int(nullable: false),
+                        PickupId = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.ApplicationId)
-                .ForeignKey("dbo.Pickups", t => t.PickupId, cascadeDelete: true)
+                .ForeignKey("dbo.Pickups", t => t.PickupId)
                 .Index(t => t.ApplicationId)
                 .Index(t => t.PickupId);
             
@@ -92,11 +92,11 @@ namespace TrashCollector.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         RegularPickupDay = c.Int(nullable: false),
                         PickupConfirmed = c.Boolean(nullable: false),
-                        ExtraPickupDay = c.DateTime(nullable: false),
+                        ExtraPickupDay = c.DateTime(),
                         ExtraPickupConfirmed = c.Boolean(nullable: false),
                         Bill = c.Double(nullable: false),
-                        TemporarySuspensionStart = c.DateTime(nullable: false),
-                        TemporarySuspensionEnd = c.DateTime(nullable: false),
+                        TemporarySuspensionStart = c.DateTime(),
+                        TemporarySuspensionEnd = c.DateTime(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -105,7 +105,8 @@ namespace TrashCollector.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
+                        FirstName = c.String(),
+                        LastName = c.String(),
                         Zipcode = c.Int(nullable: false),
                         ApplicationId = c.String(maxLength: 128),
                     })
