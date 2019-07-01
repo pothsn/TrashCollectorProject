@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -46,11 +47,15 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,RegularPickupDay,PickupConfirmed,ExtraPickupDay,ExtraPickupConfirmed,Bill,TemporarySuspensionStart,TemporarySuspensionEnd")] Pickup pickup, string id)
+        public ActionResult Create([Bind(Include = "Id,RegularPickupDay,PickupConfirmed,ExtraPickupDay,ExtraPickupConfirmed,Bill,TemporarySuspensionStart,TemporarySuspensionEnd")] Pickup pickup, int id)
         {
             if (ModelState.IsValid)
             {
                 db.Pickups.Add(pickup);
+                db.SaveChanges();
+                string currentUserId = User.Identity.GetUserId();
+                Customer customer = db.Customers.Where(c => c.ApplicationId == currentUserId).Single();
+                customer.PickupId = id;
                 db.SaveChanges();
                 return RedirectToAction("Details", new { id = pickup.Id });
             }

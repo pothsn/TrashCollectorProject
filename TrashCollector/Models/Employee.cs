@@ -16,10 +16,12 @@ namespace TrashCollector.Models
         public string FirstName { get; set; }
         [DisplayName("Last Name")]
         public string LastName { get; set; }
+        [DisplayName("Zip Code")]
         public int Zipcode { get; set; }
 
         [ForeignKey("ApplicationUser")]
         public string ApplicationId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+        
     }
 }

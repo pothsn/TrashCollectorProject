@@ -181,6 +181,10 @@
     <Compile Include="Migrations\201906282103480_NewMigrationForTestableSeeds.Designer.cs">
       <DependentUpon>201906282103480_NewMigrationForTestableSeeds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907011311557_AddedDisplayNameToCustomerAndEmployeeModels.cs" />
+    <Compile Include="Migrations\201907011311557_AddedDisplayNameToCustomerAndEmployeeModels.Designer.cs">
+      <DependentUpon>201907011311557_AddedDisplayNameToCustomerAndEmployeeModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -258,13 +262,13 @@
     <Content Include="Views\Pickups\Details.cshtml" />
     <Content Include="Views\Pickups\Edit.cshtml" />
     <Content Include="Views\Pickups\Index.cshtml" />
-    <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Create.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Delete.cshtml" />
     <Content Include="Views\Shared\_LayoutCustomer.cshtml" />
     <Content Include="Views\Shared\_LayoutEmployee.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -285,6 +289,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201906282103480_NewMigrationForTestableSeeds.resx">
       <DependentUpon>201906282103480_NewMigrationForTestableSeeds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907011311557_AddedDisplayNameToCustomerAndEmployeeModels.resx">
+      <DependentUpon>201907011311557_AddedDisplayNameToCustomerAndEmployeeModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
