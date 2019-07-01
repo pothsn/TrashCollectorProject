@@ -24,11 +24,15 @@ namespace TrashCollector.Controllers
             todaysDate = DateTime.Today;
             int today = (int)System.DateTime.Now.DayOfWeek;           
             var customerPickups = db.Customers.Where(p => p.Zipcode == employee.Zipcode && ((int)p.Pickup.RegularPickupDay == today || p.Pickup.ExtraPickupDay == todaysDate)).Include(p => p.Pickup).ToList();
-            foreach (Customer customer in customerPickups)
-            {   
-                if (todaysDate.Ticks > ((DateTime)customer.Pickup.TemporarySuspensionStart).Ticks && todaysDate.Ticks < ((DateTime)customer.Pickup.TemporarySuspensionEnd).Ticks)
+
+            for (int i = 0; i < customerPickups.Count; i++)
+            {
+                if (customerPickups[i].Pickup.TemporarySuspensionStart != null && customerPickups[i].Pickup.TemporarySuspensionEnd != null)
                 {
-                    customerPickups.Remove(customer);
+                    if (todaysDate.Ticks > ((DateTime)customerPickups[i].Pickup.TemporarySuspensionStart).Ticks && todaysDate.Ticks < ((DateTime)customerPickups[i].Pickup.TemporarySuspensionEnd).Ticks)
+                    {
+                        customerPickups.RemoveAt(i);
+                    }
                 }
             }
             return View(customerPickups);
