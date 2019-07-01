@@ -115,6 +115,12 @@ namespace TrashCollector.Controllers
         //GET: Confirm pickup!!
         public ActionResult ConfirmPickup(int? id)
         {
+
+            // query customer, edit bill and 
+            // query pickup, edit confirmed pickup status
+            // save changes
+            // redirect to Action => Index
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
