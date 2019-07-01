@@ -17,7 +17,7 @@ namespace TrashCollector.Controllers
 
         // GET: Employees
         public ActionResult Index()
-        {
+        {                     
             string currentUserId = User.Identity.GetUserId();
             // query for logged in employee
             Employee employee = db.Employees.Where(e => e.ApplicationId == currentUserId).Single();
@@ -40,6 +40,21 @@ namespace TrashCollector.Controllers
                 return HttpNotFound();
             }
             return View(employee);
+        }
+
+        //GET: Pickup details!!
+        public ActionResult ShowCustomerAddress(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer);
         }
 
         // GET: Employees/Create
@@ -96,6 +111,37 @@ namespace TrashCollector.Controllers
             }
             return View(employee);
         }
+
+        //GET: Confirm pickup!!
+        public ActionResult ConfirmPickup(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Pickup pickup = db.Pickups.Find(id);
+            if (pickup == null)
+            {
+                return HttpNotFound();
+            }
+            return View(pickup);
+        }
+
+        //POST: Confirm pickup!!
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmiPickup([Bind(Include = "ExtraPickupConfirmed")] Pickup pickup)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(pickup).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(pickup);
+        }
+
+
 
         // GET: Employees/Delete/5
         public ActionResult Delete(int? id)

@@ -18,10 +18,7 @@
             @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Zipcode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ApplicationId)
+            @Html.DisplayNameFor(model => model.PickupId)
         </th>
         <th></th>
     </tr>
@@ -38,12 +35,8 @@
             @Html.DisplayFor(modelItem => item.Zipcode)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ApplicationId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Confirm Pickup", "ConfirmPickup", new { id=item.Id }) |
+            @Html.ActionLink("Pickup Address", "ShowCustomerAddress", new { id=item.Id }) |
         </td>
     </tr>
 }
