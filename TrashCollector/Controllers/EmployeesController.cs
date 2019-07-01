@@ -115,39 +115,51 @@ namespace TrashCollector.Controllers
         //GET: Confirm pickup!!
         public ActionResult ConfirmPickup(int? id)
         {
-
-            // query customer, edit bill and 
-            // query pickup, edit confirmed pickup status
-            // save changes
-            // redirect to Action => Index
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pickup pickup = db.Pickups.Find(id);
-            if (pickup == null)
+
+            // Customer customer = db.Customers.Find(id);
+            Customer customer = db.Customers.Where(c => c.Id == id).Include(c => c.Pickup).FirstOrDefault();
+
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(pickup);
+            return View(customer.Pickup);
+
+            //Customer customer = db.Customers.Where(c => c.Id == id).Single();
+            //customer.Pickup.Bill += 20;
+            //customer.Pickup.PickupConfirmed = true;
+            //or if is ExtraPickup???
+            //customer.Pickup.ExtraPickupConfirmed = true;
+            //db.SaveChanges();
+            //return RedirectToAction ("index");
         }
 
-        //POST: Confirm pickup!!
+        //POST: Confirm pickup!
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ConfirmiPickup([Bind(Include = "ExtraPickupConfirmed")] Pickup pickup)
+        public ActionResult ConfirmPickup([Bind(Include = "Id,RegularPickupDay,PickupConfirmed,ExtraPickupDay,ExtraPickupConfirmed,TemporarySuspensionStart,TemporarySuspensionEnd")] Pickup pickup)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(pickup).State = EntityState.Modified;
+                if (pickup.PickupConfirmed == true)
+                {
+                    pickup.Bill += 20;
+                }
+                if (pickup.ExtraPickupConfirmed == true)
+                {
+                    pickup.Bill += 20;
+                }
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             return View(pickup);
         }
-
-
 
         // GET: Employees/Delete/5
         public ActionResult Delete(int? id)
