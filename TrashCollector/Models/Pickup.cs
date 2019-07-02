@@ -14,13 +14,14 @@ namespace TrashCollector.Models
         public int Id { get; set; }
 
         [DisplayName("Regular Pickup Day")]
-        public DayOfWeek RegularPickupDay { get; set; }
+        public DayOfWeek? RegularPickupDay { get; set; }
         
         [DisplayName("Pickup Confirmed")]
         public bool PickupConfirmed { get; set; }
 
         [DisplayName("Extra Pickup Day")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString ="{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? ExtraPickupDay { get; set; }
 
         [DisplayName("Extra Pickup Confirmed")]
@@ -30,10 +31,12 @@ namespace TrashCollector.Models
 
         [DisplayName("Temporary Suspension Start")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? TemporarySuspensionStart { get; set; }
 
         [DisplayName("Temporary Suspension End")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? TemporarySuspensionEnd { get; set; }
 
         

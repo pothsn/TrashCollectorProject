@@ -185,6 +185,14 @@
     <Compile Include="Migrations\201907011311557_AddedDisplayNameToCustomerAndEmployeeModels.Designer.cs">
       <DependentUpon>201907011311557_AddedDisplayNameToCustomerAndEmployeeModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907021305462_UpdateDateTimeFormat.cs" />
+    <Compile Include="Migrations\201907021305462_UpdateDateTimeFormat.Designer.cs">
+      <DependentUpon>201907021305462_UpdateDateTimeFormat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907021312488_TestingMakingDayOfWeekRegularPickupDayNullable.cs" />
+    <Compile Include="Migrations\201907021312488_TestingMakingDayOfWeekRegularPickupDayNullable.Designer.cs">
+      <DependentUpon>201907021312488_TestingMakingDayOfWeekRegularPickupDayNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -294,6 +302,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907011311557_AddedDisplayNameToCustomerAndEmployeeModels.resx">
       <DependentUpon>201907011311557_AddedDisplayNameToCustomerAndEmployeeModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907021305462_UpdateDateTimeFormat.resx">
+      <DependentUpon>201907021305462_UpdateDateTimeFormat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907021312488_TestingMakingDayOfWeekRegularPickupDayNullable.resx">
+      <DependentUpon>201907021312488_TestingMakingDayOfWeekRegularPickupDayNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

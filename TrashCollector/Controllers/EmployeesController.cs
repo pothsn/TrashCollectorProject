@@ -38,6 +38,28 @@ namespace TrashCollector.Controllers
             return View(customerPickups);
         }
 
+        //Get: Pickups by day
+        public ActionResult PickupsByDay(int dayOfWeek)
+        {
+            string currentUserId = User.Identity.GetUserId();
+            Employee employee = db.Employees.Where(e => e.ApplicationId == currentUserId).Single();
+            DateTime todaysDate = new DateTime();
+
+            var customerPickups = db.Customers.Where(p => p.Zipcode == employee.Zipcode && ((int)p.Pickup.RegularPickupDay == dayOfWeek)).Include(p => p.Pickup).ToList();
+
+            for (int i = 0; i < customerPickups.Count; i++)
+            {
+                if (customerPickups[i].Pickup.TemporarySuspensionStart != null && customerPickups[i].Pickup.TemporarySuspensionEnd != null)
+                {
+                    if (todaysDate.Ticks > ((DateTime)customerPickups[i].Pickup.TemporarySuspensionStart).Ticks && todaysDate.Ticks < ((DateTime)customerPickups[i].Pickup.TemporarySuspensionEnd).Ticks)
+                    {
+                        customerPickups.RemoveAt(i);
+                    }
+                }
+            }
+            return View(customerPickups);
+        }
+
         // GET: Employees/Details/5
         public ActionResult Details(int? id)
         {
@@ -139,14 +161,6 @@ namespace TrashCollector.Controllers
                 return HttpNotFound();
             }
             return View(customer.Pickup);
-
-            //Customer customer = db.Customers.Where(c => c.Id == id).Single();
-            //customer.Pickup.Bill += 20;
-            //customer.Pickup.PickupConfirmed = true;
-            //or if is ExtraPickup???
-            //customer.Pickup.ExtraPickupConfirmed = true;
-            //db.SaveChanges();
-            //return RedirectToAction ("index");
         }
 
         //POST: Confirm pickup!
