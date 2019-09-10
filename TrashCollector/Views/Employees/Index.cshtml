@@ -4,11 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Today's Pickups</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -42,7 +39,7 @@
     </td>
     <td>
         @Html.ActionLink("Pickup Confirmations", "ConfirmPickup", new { id = item.Id }) |
-        @Html.ActionLink("Pickup Address", "ShowCustomerAddress", new { id = item.Id }) |
+        @Html.ActionLink("Pickup Address", "ShowCustomerAddress", new { id = item.Id })
     </td>
 </tr>
 }
